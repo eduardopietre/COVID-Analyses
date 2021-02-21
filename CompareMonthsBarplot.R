@@ -1,7 +1,8 @@
 library(dplyr)
 library(ggplot2)
-library(coronabr)
 library(gridExtra)
+
+source("utils.R")
 
 # mortes = deaths
 # casos = cases
@@ -23,15 +24,14 @@ CustomBarPlot <- function(summ_data, x_col, y_col, title, y_label, color_low, co
     return(plot)
 }
 
-# Load dataset using 'coronabr'.
-ministry_dataset <- get_corona_minsaude()
+# Load dataset using 'coronabr', see 'utils.R'.
+ministry_dataset <- WrapperGetCoronaBrMinSaude()
 
 city_name = "Petrópolis"  # City name to filter by.
 
 frame <- subset(ministry_dataset, municipio == city_name)
 frame <- subset(frame, select=c("municipio", "data", "casosNovos", "obitosNovos"))
 frame$data <- as.Date(frame$data, format = "%Y-%m-%d")
-
 frame$mes_ano = format(frame$data, "%B\n%Y")
 
 group = group_by(frame, mes_ano)
@@ -59,13 +59,13 @@ summ$mes_ano = factor(summ$mes_ano, levels=c(
 
 plot_cases <- CustomBarPlot(
     summ, "mes_ano", "casosNovos",
-    paste("Novos casos de COVID-19 por mês em", city_name, "(20/02/2021)"),
+    paste("Novos casos de COVID-19 por mês em", city_name, "-", Sys.Date()),
     "Novos Casos", "grey", "black"
 )
 
 plot_deaths <- CustomBarPlot(
     summ, "mes_ano", "obitosNovos",
-    paste("Novas mortes por COVID-19 por mês em", city_name, "(20/02/2021)"),
+    paste("Novas mortes por COVID-19 por mês em", city_name, "-", Sys.Date()),
     "Novas Mortes", "yellow", "red"
 )
 
