@@ -1,4 +1,3 @@
-library(dplyr)
 library(ggplot2)
 
 # "data/SRAG 2020_cleaned.csv" must exist for this script to work.
@@ -22,4 +21,4 @@ g <- ggplot(srag_data, aes(x = NU_IDADE_N)) +
     ylim(0, 0.03) +
     ggtitle("SRAG 2020 Age Density Plot by Evolution")
 
-ggsave(file="images/SragAgeHistogram.png", g, height=6, width=6, dpi=400)
+ggsave(file="images/SragAgeDistplot.png", g, height=6, width=6, dpi=400)
