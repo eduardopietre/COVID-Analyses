@@ -65,7 +65,6 @@ SYMPTOMS_AND_COMORBIDITIES = [
 	"RENAL",
 	"OBESIDADE",
 	"OUT_MORBI",
-    "HAS"
 ]
 
 # Colunas que queremos, descarta as demais
