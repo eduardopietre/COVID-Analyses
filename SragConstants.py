@@ -70,8 +70,8 @@ SYMPTOMS_AND_COMORBIDITIES = [
 # Colunas que queremos, descarta as demais
 WANTED_COLUMNS = [
 	"DT_NOTIFIC",
-	#"SG_UF_NOT",
-	#"CO_MUN_NOT",
+	"SG_UF_NOT",
+	"CO_MUN_NOT",
 	"CS_SEXO",
 	"NU_IDADE_N",
 	"TP_IDADE",
