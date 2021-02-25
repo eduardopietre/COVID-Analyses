@@ -12,3 +12,4 @@ coronabr_data
 notes.txt
 *.data
 test.R
+*.rda
