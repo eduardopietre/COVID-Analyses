@@ -1,6 +1,6 @@
 
 
-# This script takes a long time to run (30min+)
+# This script may take a long time to run
 # it expects "data/vacina_parcial {date}.csv" and cleans it to reduce size.
 # This csv file must be downloaded from https://opendatasus.saude.gov.br/dataset/covid-19-vacinacao
 # and should be renamed.
@@ -9,8 +9,8 @@
 
 date_str = "25-02-21"
 
-data_vrom <- vroom::vroom(paste0("data/vacina_parcial ", date_str, ".csv"), delim=",", locale=vroom::locale(encoding="ISO-8859-1"))
-vacine_data_subset <- subset(data_vrom, select=c(
+data <-read.csv(paste0("data/vacina_parcial ", date_str, ".csv"), encoding="UTF-8")
+vacine_data_subset <- subset(data, select=c(
     "paciente_idade",
     "paciente_dataNascimento",
     "paciente_enumSexoBiologico",
